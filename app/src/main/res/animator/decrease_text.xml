@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <set android:ordering="sequentially">
+        <objectAnimator
+                android:propertyName = "textSize"
+                android:duration = "250"
+                android:valueFrom="@dimen/font_medium"
+                android:valueTo="@dimen/font_small">
+        </objectAnimator>
+    </set>
+</set>

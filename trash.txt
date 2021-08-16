@@ -1,0 +1,56 @@
+   /* public fun onClickOperation(Name : String){ клоун на григоряне
+        if(exampleText.length > 0 || Name == "("){
+            if(operationList.contains(Name[0]))
+                exampleText = if(operationList.contains(exampleText[exampleText.lastIndex])) exampleText.dropLast(1) + Name[0] else exampleText + Name[0]
+            else{
+                when(Name){
+                    "<-" -> exampleText = exampleText.dropLast(1)
+                    "." -> addDot()
+                    "C" -> exampleText = ""
+                    // "(",")" -> exampleText += Name - доделать
+                    "=" -> makeCounting()
+                }
+            }
+            textView?.text = exampleText
+        }
+    }
+
+    private fun makeCounting(){
+        var a: MutableList<String> = mutableListOf()
+        var elementExample: String = ""
+        for(i in 0..exampleText.lastIndex){ // Массив с числами и операциями
+            if(!operationList.contains(exampleText[i])) elementExample+=exampleText[i]
+            else{
+                a.add(elementExample)
+                a.add(exampleText[i].toString())
+                elementExample = ""
+            }
+        }
+        if(elementExample!="") a.add(elementExample)
+        var i: Int = 0
+        while(i < a.size){ // Умножение и деление
+            if(a[i] == "*" || a[i] == "/") a = operationCount(a[i], i, a)
+            else i++
+        }
+        i = 0
+        while(i < a.size){ // Сложение и вычитание
+            if(a[i] == "+" || a[i] == "-") a = operationCount(a[i], i, a)
+            else i++
+        }
+        exampleText = a[0]
+    }
+
+    private fun operationCount(operation : String, i : Int, a: MutableList<String>) : MutableList<String>{
+        var number: Double = 0.0
+        when(operation){
+            "*" ->  number = a[i - 1].toDouble() * a[i + 1].toDouble()
+            "/" ->  number = a[i - 1].toDouble() / a[i + 1].toDouble()
+            "+" ->  number = a[i - 1].toDouble() + a[i + 1].toDouble()
+            "-" ->  number = a[i - 1].toDouble() - a[i + 1].toDouble()
+        }
+        a[i+1] = number.toString()
+        a.removeAt(i-1)
+        a.removeAt(i-1)
+        return a
+    }
+    */
